@@ -1,12 +1,12 @@
-# Sartorello Woo Theme 🌟
+# Sartorello® Woo Theme 🌟
 
 [![WordPress Version](https://img.shields.io/badge/WordPress-6.0%2B-blue.svg?style=flat-square&logo=wordpress)](https://wordpress.org)
 [![PHP Version](https://img.shields.io/badge/PHP-8.1%2B-777BB4.svg?style=flat-square&logo=php)](https://php.net)
-[![Tailwind CSS Version](https://img.shields.io/badge/Tailwind_CSS-v4.3.0-38B2AC.svg?style=flat-square&logo=tailwind-css)](https://tailwindcss.com)
 [![Alpine.js Version](https://img.shields.io/badge/Alpine.js-v3.15%2B-8BC0D0.svg?style=flat-square&logo=alpine.js)](https://alpinejs.dev)
+[![Tailwind CSS Version](https://img.shields.io/badge/Tailwind_CSS-v4.3.0-38B2AC.svg?style=flat-square&logo=tailwind-css)](https://tailwindcss.com)
 [![License](https://img.shields.io/badge/License-GPL--3.0-green.svg?style=flat-square)](https://www.gnu.org/licenses/gpl-3.0.html)
 
-A highly bespoke, premium e-commerce WordPress theme custom-tailored for the renowned Brazilian furniture manufacturer **Sartorello® Móveis**. Engineered from the ground up to combine speed, high-end aesthetics, and zero plugin bloat, this theme utilizes a cutting-edge front-end stack featuring **Tailwind CSS v4**, **Alpine.js v3**, and a lightweight **Webpack** asset pipeline.
+A highly bespoke, premium e-commerce WordPress theme custom-tailored for the renowned Brazilian furniture manufacturer **Sartorello® Móveis**. Engineered from the ground up to combine speed, high-end aesthetics, and zero plugin bloat, this theme utilizes a cutting-edge front-end stack featuring **Alpine.js v3**, **Tailwind CSS v4**, and a lightweight **Webpack** asset pipeline.
 
 By disabling default WooCommerce styles, this theme gives full visual control directly to custom-designed, utility-driven layouts optimized for luxury interiors.
 
@@ -14,12 +14,12 @@ By disabling default WooCommerce styles, this theme gives full visual control di
 
 ## ✨ Key Features
 
-- **💡 Proprietary, Ground-Up Slider & Gallery Mechanics**:
-  - The product page image gallery, promotional banner carousels, and sliders were built **entirely from the ground up without relying on external slider libraries** (such as Swiper or Slick).
+- **💡 Proprietary Slider & Gallery Mechanics**:
+  - The product page image gallery, promotional banner carousels, and sliders were built **entirely from scratch without relying on external slider libraries** (such as Swiper or Slick).
   - Designed leveraging **Alpine.js** for reactive component state management and lightweight **Vanilla JS** to drive physics, touch gestures, and desktop mouse-drag scrolling.
   - Implements a bespoke drag-and-swipe controller with fine-tuned horizontal gesture locking, dynamic inertia, dynamic viewport calculations, and seamless CSS scroll snapping.
 - **⚡ Modern Front-End Stack**: Powered by **Tailwind CSS v4** (utilizing the CSS-first CLI compiler) and **Alpine.js v3** (integrated with *Collapse*, *Intersect*, and *Resize* plugins) for premium, fluid user micro-interactions.
-- **🛠️ Dedicated Sartorello® Options Panel**:
+- **🛠️ Dedicated Theme Options Panel**:
   - Direct dashboard controls to configure brand identity assets (logos, custom home banners, and motto text).
   - Built-in business settings: E-mail, click-to-chat WhatsApp integration (using custom digit-only server-side sanitization), social media networks, and custom rich-text footer settings.
 - **🇧🇷 Brazilian E-Commerce Optimizations**:
@@ -34,7 +34,7 @@ By disabling default WooCommerce styles, this theme gives full visual control di
 ## 📁 Repository Structure
 
 ```
-ecommerce-wp-theme/
+sartorello-woo-theme/
 ├── assets/                  # Compiled production stylesheets & script bundles
 ├── includes/                # Theme-specific core classes & settings panel
 │   └── theme-settings.php   # Custom Sartorello® dashboard integration code
