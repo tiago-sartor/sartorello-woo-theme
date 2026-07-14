@@ -111,8 +111,8 @@ defined('ABSPATH') || exit;
                             class="ml-4 flex-auto">
                             <p class="text-sm font-medium text-neutral-700 group-hover:text-neutral-800" x-html="result.name"></p>
                             <div x-show="onSale">
-                                <span class="inline-block line-through text-xs text-neutral-500 group-hover:text-neutral-700" x-text="formatPrice(salePrice)"></span>
-                                <span class="inline-block text-sm font-medium text-neutral-700 group-hover:text-neutral-800" x-text="formatPrice(regularPrice)"></span>
+                                <span class="inline-block line-through text-xs text-neutral-500 group-hover:text-neutral-700" x-text="formatPrice(regularPrice)"></span>
+                                <span class="inline-block text-sm font-medium text-neutral-700 group-hover:text-neutral-800" x-text="formatPrice(salePrice)"></span>
                             </div>
                             <div x-show="!onSale">
                                 <span class="inline-block text-sm font-medium text-neutral-700 group-hover:text-neutral-800" x-text="formatPrice(price)"></span>
