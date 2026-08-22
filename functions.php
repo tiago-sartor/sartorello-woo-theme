@@ -3,43 +3,53 @@
 declare(strict_types=1);
 defined('ABSPATH') || exit;
 
-
 require_once get_template_directory() . '/includes/theme-settings.php';
 
 
-function sartorello_woo_theme_register_menus()
-{
-    register_nav_menus(
-        array(
-            'sartorello-woo-theme_furniture'  => __('Furniture Menu', 'sartorello-woo-theme'),
-            'sartorello-woo-theme_decoration' => __('Decoration Menu', 'sartorello-woo-theme'),
-            'sartorello-woo-theme_lighting'   => __('Lighting Menu', 'sartorello-woo-theme'),
-        )
-    );
-}
-add_action('after_setup_theme', 'sartorello_woo_theme_register_menus');
-
-
 //========================================
-// WooCommerce Support
+// THEME SETUP
 //========================================
 //
-if (class_exists('WooCommerce')) {
-    // Declare WooCommerce support for our theme.
-    // WooCommerce template overrides are only enabled on themes that declare WooCommerce support.
-    function declare_woocommerce_support()
-    {
-        add_theme_support('woocommerce');
-    }
-    add_action('after_setup_theme', 'declare_woocommerce_support');
+function sartorello_woo_theme_setup(): void
+{
+    // Theme Supports
+    add_theme_support('title-tag');
+    add_theme_support('post-thumbnails');
+    add_theme_support('automatic-feed-links');
+    add_theme_support('custom-logo', [
+        'height'      => 80,
+        'width'       => 240,
+        'flex-height' => true,
+        'flex-width'  => true,
+        'header-text' => ['site-title', 'site-description']
+    ]);
 
-    // Remove WooCommerce styles.
-    // This is useful if you want to use your own styles instead of the default WooCommerce styles.
-    add_filter('woocommerce_enqueue_styles', '__return_false');
+    // WooCommerce Support
+    add_theme_support('woocommerce');
+    // add_theme_support('wc-product-gallery-zoom');
+    // add_theme_support('wc-product-gallery-lightbox');
+    // add_theme_support('wc-product-gallery-slider');
 
-    // Remove Page Title from WooCommerce pages.
-    add_filter('woocommerce_show_page_title', '__return_false');
+    // Register Nav Menus
+    register_nav_menus([
+        'sartorello-woo-theme_furniture'  => __('Furniture Menu', 'sartorello-woo-theme'),
+        'sartorello-woo-theme_decoration' => __('Decoration Menu', 'sartorello-woo-theme'),
+        'sartorello-woo-theme_lighting'   => __('Lighting Menu', 'sartorello-woo-theme'),
+    ]);
 }
+add_action('after_setup_theme', 'sartorello_woo_theme_setup');
+
+
+//==========================================
+// WooCommerce Integration & Improvements
+//==========================================
+//
+// Remove WooCommerce styles.
+// This prevent default WooCommerce styles from overriding our own.
+add_filter('woocommerce_enqueue_styles', '__return_false');
+
+// Remove Page Title from WooCommerce pages.
+add_filter('woocommerce_show_page_title', '__return_false');
 
 
 //========================================

@@ -8,16 +8,16 @@
     "main": "index.js",
     "type": "module",
     "dependencies": {
-        "alpinejs": "^3.15.12",
-        "@alpinejs/collapse": "^3.15.12",
-        "@alpinejs/intersect": "^3.15.12",
-        "@alpinejs/resize": "^3.15.12"
+        "alpinejs": "^3.16.2",
+        "@alpinejs/collapse": "^3.16.2",
+        "@alpinejs/intersect": "^3.16.2",
+        "@alpinejs/resize": "^3.16.2"
     },
     "devDependencies": {
-        "tailwindcss": "^4.3.0",
-        "@tailwindcss/cli": "^4.3.0",
-        "webpack": "^5.107.2",
-        "webpack-cli": "^7.0.3"
+        "tailwindcss": "^4.3.3",
+        "@tailwindcss/cli": "^4.3.3",
+        "webpack": "^5.109.2",
+        "webpack-cli": "^7.2.2"
     },
     "scripts": {
         "dev": "npm run webpack-dev && npm run tailwind-dev",
