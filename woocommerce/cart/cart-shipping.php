@@ -58,7 +58,7 @@ $shipping_total = WC()->cart->get_shipping_total();
 
 					<?php $free_shipping = $method->cost <= 0 && in_array($method->get_method_id(), ['free_shipping', 'local_pickup'], true); ?>
 
-					<li class="has-checked:bg-neutral-100">
+					<li class="has-[input[checked]]:bg-neutral-100">
 						<label class="flex items-center justify-start gap-2 p-2 cursor-pointer" for="shipping_method_<?php echo esc_attr($index); ?>_<?php echo esc_attr(sanitize_title($method->id)) ?>">
 							<input class="shipping_method cursor-pointer" type="radio" name="shipping_method[<?php echo esc_attr($index); ?>]" data-index="<?php echo esc_attr($index); ?>" id="shipping_method_<?php echo esc_attr($index); ?>_<?php echo esc_attr(sanitize_title($method->id)); ?>" value="<?php echo esc_attr($method->id); ?>" <?php checked($method->id, $chosen_method); ?>>
 							<div class="flex flex-1 items-center justify-between text-xs">

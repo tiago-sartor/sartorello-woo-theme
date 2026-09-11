@@ -20,7 +20,7 @@ declare(strict_types=1);
 defined('ABSPATH') || exit;
 ?>
 
-<li class="rounded-md border border-neutral-300 bg-white p-4 has-checked:border has-checked:border-gold-800 has-checked:bg-gold-100 wc_payment_method payment_method_<?php echo esc_attr($gateway->id); ?>">
+<li class="rounded-md border border-neutral-300 bg-white p-4 has-[input[checked]]:border has-[input[checked]]:border-gold-800 has-[input[checked]]:bg-gold-100 wc_payment_method payment_method_<?php echo esc_attr($gateway->id); ?>">
 
     <label class="flex items-center justify-start gap-4 cursor-pointer" for="payment_method_<?php echo esc_attr($gateway->id); ?>">
         <input class="input-radio size-5 cursor-pointer" id="payment_method_<?php echo esc_attr($gateway->id); ?>" type="radio" name="payment_method" value="<?php echo esc_attr($gateway->id); ?>" <?php checked($gateway->chosen, true); ?> data-order_button_text="<?php echo esc_attr($gateway->order_button_text); ?>" />
