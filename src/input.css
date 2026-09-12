@@ -92,6 +92,11 @@
       }
    }
 
+    /* Hide the Google reCAPTCHA v3 Badge */
+    .grecaptcha-badge { 
+        @apply pointer-events-none! invisible! opacity-0!; 
+    }
+
    /**
     * ALPINE JS
     * This is used to hide elements until Alpine.js is ready.

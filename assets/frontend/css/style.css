@@ -2199,6 +2199,11 @@
       display: none !important;
     }
   }
+  .grecaptcha-badge {
+    pointer-events: none !important;
+    visibility: hidden !important;
+    opacity: 0% !important;
+  }
   [x-cloak] {
     display: none !important;
   }
