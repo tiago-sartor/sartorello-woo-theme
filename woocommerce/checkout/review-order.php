@@ -60,6 +60,9 @@ defined('ABSPATH') || exit;
                             <?php foreach ($product_attributes as $attribute_name => $attribute_value) :
                                 $attribute_name = str_replace('attribute_', '', $attribute_name);
                                 $term = get_term_by('slug', $attribute_value, $attribute_name);
+                                if (!$term) {
+                                    continue;
+                                }
                             ?>
                                 <p class="mt-1 text-xs">
                                     <span class="font-semibold"><?php echo esc_html(wc_attribute_label($attribute_name, $_product)); ?>:</span>
