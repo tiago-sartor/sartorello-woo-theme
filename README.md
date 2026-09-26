@@ -22,12 +22,9 @@ By disabling default WooCommerce styles, this theme gives full visual control di
 - **Dedicated Theme Options Panel**:
   - Direct dashboard controls to configure brand identity assets (logos, custom home banners, and motto text).
   - Built-in business settings: E-mail, click-to-chat WhatsApp integration (using custom digit-only server-side sanitization), social media networks, and custom rich-text footer settings.
-- **Brazilian E-Commerce Optimizations**:
-  - Native CEP-based address autocomplete integrated natively on checkout.
-  - Intelligent Individual vs Corporate (PF/PJ) fields visibility toggles for frictionless legal verification.
 - **Engineered for Performance**: 
   - Minimalist file sizes and zero standard WooCommerce CSS payloads.
-  - Granular, context-aware enqueue scripts (address autocomplete, gallery, and mini-cart scripts only load on target pages to improve the store's PageSpeed rating).
+  - Granular, context-aware enqueue scripts (gallery and mini-cart scripts only load on target pages to improve the store's PageSpeed rating).
 
 ---
 

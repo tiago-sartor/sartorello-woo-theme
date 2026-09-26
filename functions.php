@@ -68,16 +68,6 @@ function enqueue_styles_and_scripts(): void
         // Resize Thumbnails Script
         wp_enqueue_script('resize-thumbnails', get_template_directory_uri() . '/assets/frontend/js/resize-thumbnails.js', [], null, true);
     }
-
-    // *** Enqueue scripts for the checkout page ***
-    // Note: The scripts are also enqueued on the account page because the billing and shipping fields are also used there.
-    // This is necessary for the address autocomplete and person type visibility scripts to work correctly. 
-    if (is_checkout() || is_account_page()) {
-        // Checkout Address Autocomplete
-        wp_enqueue_script('checkout-address-autocomplete', get_template_directory_uri() . '/assets/frontend/js/checkout-address-autocomplete.js', [], null, true);
-        // Checkout Person Type Visibility
-        wp_enqueue_script('checkout-person-type-visibility', get_template_directory_uri() . '/assets/frontend/js/checkout-person-type-visibility.js', [], null, true);
-    }
 }
 add_action('wp_enqueue_scripts', 'enqueue_styles_and_scripts');
 
