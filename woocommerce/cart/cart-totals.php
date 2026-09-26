@@ -114,11 +114,11 @@ defined('ABSPATH') || exit;
 				</div>
 
 				<form x-cloak x-transition x-show="open" class="flex gap-2 mt-4" action="<?php echo esc_url(wc_get_cart_url()); ?>" method="post">
-					<div class="relative overflow-hidden flex flex-col flex-1 items-start justify-center h-13 px-3 py-1 border border-neutral-500 rounded-sm bg-white">
-						<label for="coupon_code" x-bind:class="active ? 'top-1 text-xs text-neutral-800' : 'text-sm text-neutral-400'" class="absolute pointer-events-none transition-all ease-in-out duration-200">Digite o código</label>
-						<input @focus="active = true" @blur="if ($el.value === '') active = false" type="text" name="coupon_code" x-bind:class="active ? 'pt-4.5' : ''" class="size-full focus:outline-none" id="coupon_code" value="">
+					<div class="relative flex flex-col flex-1 items-start justify-center">
+						<label for="coupon_code" x-bind:class="active ? 'top-1.5 text-xs font-medium' : 'top-4.25 text-sm'" class="pointer-events-none absolute left-3.5 text-neutral-500 transition-all duration-200 ease-in-out select-none">Digite o código</label>
+						<input @focus="active = true" @blur="if ($el.value === '') active = false" type="text" id="coupon_code" name="coupon_code" value="" x-bind:class="active ? 'pt-4.5' : ''" class="h-13 w-full rounded-sm border border-neutral-500 bg-white px-3.5 text-base text-neutral-800 placeholder-transparent transition-all duration-200 ease-in-out focus:outline-none">
 					</div>
-					<button type="submit" class="flex items-center justify-center px-6 text-sm border border-neutral-500 rounded-sm hover:bg-neutral-50" name="apply_coupon" value="<?php esc_attr_e('Apply', 'woocommerce'); ?>"><?php esc_html_e('Apply', 'woocommerce'); ?></button>
+					<button type="submit" class="flex items-center justify-center px-6 text-sm border border-neutral-500 rounded-sm bg-neutral-100 hover:bg-neutral-200" name="apply_coupon" value="<?php esc_attr_e('Apply', 'woocommerce'); ?>"><?php esc_html_e('Apply', 'woocommerce'); ?></button>
 				</form>
 
 				<?php do_action('woocommerce_cart_coupon'); ?>

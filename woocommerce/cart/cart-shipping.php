@@ -60,7 +60,7 @@ $shipping_total = WC()->cart->get_shipping_total();
 
 					<li class="has-[input[checked]]:bg-neutral-100">
 						<label class="flex items-center justify-start gap-2 p-2 cursor-pointer" for="shipping_method_<?php echo esc_attr($index); ?>_<?php echo esc_attr(sanitize_title($method->id)) ?>">
-							<input class="shipping_method cursor-pointer" type="radio" name="shipping_method[<?php echo esc_attr($index); ?>]" data-index="<?php echo esc_attr($index); ?>" id="shipping_method_<?php echo esc_attr($index); ?>_<?php echo esc_attr(sanitize_title($method->id)); ?>" value="<?php echo esc_attr($method->id); ?>" <?php checked($method->id, $chosen_method); ?>>
+							<input class="shipping_method cursor-pointer accent-current" type="radio" name="shipping_method[<?php echo esc_attr($index); ?>]" data-index="<?php echo esc_attr($index); ?>" id="shipping_method_<?php echo esc_attr($index); ?>_<?php echo esc_attr(sanitize_title($method->id)); ?>" value="<?php echo esc_attr($method->id); ?>" <?php checked($method->id, $chosen_method); ?>>
 							<div class="flex flex-1 items-center justify-between text-xs">
 								<span class="text-left"><?php echo esc_html($method->get_label()); ?></span>
 								<span class="font-semibold text-right whitespace-nowrap"><?php echo wp_kses_post($free_shipping ? 'Grátis' : wc_price($method->cost)); ?></span>
