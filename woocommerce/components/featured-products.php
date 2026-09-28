@@ -29,7 +29,7 @@ defined('ABSPATH') || exit;
     aria-label="<?php esc_attr_e('Featured products', 'woocommerce'); ?>">
 
     <button x-on:click="slideBack()" class="flex items-center justify-center inset-y-0" type="button">
-        <svg class="size-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="inherit">
+        <svg class="size-10" viewBox="0 -960 960 960" fill="inherit">
             <path d="M560-267.69 347.69-480 560-692.31 588.31-664l-184 184 184 184L560-267.69Z" />
         </svg>
     </button>
@@ -61,7 +61,7 @@ defined('ABSPATH') || exit;
     </ul>
 
     <button x-on:click="slideForw()" class="flex items-center justify-center inset-y-0" type="button">
-        <svg class="size-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="inherit">
+        <svg class="size-10" viewBox="0 -960 960 960" fill="inherit">
             <path d="m531.69-480-184-184L376-692.31 588.31-480 376-267.69 347.69-296l184-184Z" />
         </svg>
     </button>

@@ -22,7 +22,9 @@ defined('ABSPATH') || exit;
 do_action('woocommerce_before_shipping_calculator');
 ?>
 
-<form x-init="if ($refs.postcode.value !== '') active = true" x-data="{ active: false }" class="woocommerce-shipping-calculator mt-4" action="<?php echo esc_url(wc_get_cart_url()); ?>" method="post">
+<form x-init="if ($refs.postcode.value !== '') active = true" x-data="{ active: false }" class="woocommerce-shipping-calculator mt-5" action="<?php echo esc_url(wc_get_cart_url()); ?>" method="post">
+
+    <p class="mb-2 text-xs">Calcule o frete e prazo de entrega</p>
 
     <div id="calc_shipping_postcode_field">
         <div class="flex gap-2">

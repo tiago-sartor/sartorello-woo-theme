@@ -46,11 +46,15 @@ if ($related_products) : ?>
         class="relative w-full flex flex-row flex-nowrap select-none"
         aria-label="<?php esc_attr_e('Related products', 'woocommerce'); ?>">
 
-        <button x-on:click="slideBack()" class="flex items-center justify-center inset-y-0" type="button">
-            <svg class="size-10" viewBox="0 -960 960 960" fill="currentColor">
-                <path d="M560-267.69 347.69-480 560-692.31 588.31-664l-184 184 184 184L560-267.69Z" />
-            </svg>
-        </button>
+        <?php if (count($related_products) > 4) : ?>
+
+            <button x-on:click="slideBack()" class="flex items-center justify-center inset-y-0" type="button">
+                <svg class="size-10" viewBox="0 -960 960 960" fill="currentColor">
+                    <path d="M560-267.69 347.69-480 560-692.31 588.31-664l-184 184 184 184L560-267.69Z" />
+                </svg>
+            </button>
+
+        <?php endif; ?>
 
         <!-- The Loop -->
         <ul x-ref="slider" class="relative w-full flex flex-row flex-nowrap justify-start overflow-x-scroll snap-x snap-mandatory hide-scrollbar">
@@ -70,11 +74,15 @@ if ($related_products) : ?>
         </ul>
         <!-- End Of The Loop -->
 
-        <button x-on:click="slideForw()" class="flex items-center justify-center inset-y-0" type="button">
-            <svg class="size-10" viewBox="0 -960 960 960" fill="currentColor">
-                <path d="m531.69-480-184-184L376-692.31 588.31-480 376-267.69 347.69-296l184-184Z" />
-            </svg>
-        </button>
+        <?php if (count($related_products) > 4) : ?>
+
+            <button x-on:click="slideForw()" class="flex items-center justify-center inset-y-0" type="button">
+                <svg class="size-10" viewBox="0 -960 960 960" fill="currentColor">
+                    <path d="m531.69-480-184-184L376-692.31 588.31-480 376-267.69 347.69-296l184-184Z" />
+                </svg>
+            </button>
+
+        <?php endif; ?>
 
     </div>
 

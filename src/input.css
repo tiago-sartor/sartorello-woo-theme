@@ -156,6 +156,17 @@
    }
 
    /**
+    * BRAZILIAN MARKET SHIPPING CALCULATOR WIDGET
+    * This is used to display the shipping calculator widget on the single product page.
+    */
+    .csbmw-shipping-calculator-card {
+        @apply rounded-md border border-neutral-300 bg-neutral-50 p-4;
+    }
+    .csbmw-shipping-calculator-button {
+        @apply rounded-sm bg-neutral-900 px-4 py-2 text-sm font-medium text-white hover:bg-neutral-700;
+    }
+
+   /**
     * HIDE PRODUCT DESCRIPTION INSIDE THE ADD-TO-CART FORM
     */
    .woocommerce-variation-description {
