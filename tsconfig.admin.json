@@ -1,0 +1,32 @@
+{
+    "compilerOptions": {
+        /* Environment Settings */
+        "target": "ES2022",
+        "module": "ESNext",
+        /* Build Output */
+        "outDir": "./assets/admin/js",
+        "rootDir": "./src/ts/admin",
+        "removeComments": true,
+        "sourceMap": false,
+        /* Strictness & Quality */
+        "strict": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noImplicitOverride": true,
+        "noUncheckedIndexedAccess": true,
+        "exactOptionalPropertyTypes": true,
+        "noFallthroughCasesInSwitch": true,
+        "noPropertyAccessFromIndexSignature": true,
+        /* Compatibility */
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        /* Recommended Options */
+        "skipLibCheck": true,
+        "isolatedModules": true,
+        "verbatimModuleSyntax": true,
+        "noUncheckedSideEffectImports": true,
+    },
+    "include": [
+        "src/ts/admin/**/*"
+    ]
+}
