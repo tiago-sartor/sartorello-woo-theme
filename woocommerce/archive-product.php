@@ -48,7 +48,7 @@ defined('ABSPATH') || exit;
             <?php if (is_search()) : ?>
                 <h1 class="text-3xl font-bold tracking-tight">Resultados da pesquisa para "<span class="text-red-900"><?php echo get_search_query(); ?></span>"</h1>
             <?php else: ?>
-                <h1 class="text-5xl font-serif font-medium italic"><?php esc_html(woocommerce_page_title()); ?></h1>
+                <h1 class="text-5xl font-serif"><?php esc_html(woocommerce_page_title()); ?></h1>
             <?php endif; ?>
             <?php if (is_product_taxonomy() && !empty(term_description())) : ?>
                 <p class="mt-4 text-base text-neutral-500" aria-label="Description"><?php echo esc_html(wp_strip_all_tags(term_description())); ?></p>

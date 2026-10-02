@@ -57,7 +57,7 @@ if (post_password_required()) {
         <div class="mt-10 sm:mt-16 lg:mt-0">
             <div class="flex flex-col gap-2.5">
                 <?php wc_get_template('single-product/sale-badge.php'); ?>
-                <h1 class="text-4xl font-serif font-light tracking-wide"><?php the_title(); ?></h1>
+                <h1 class="text-4xl font-serif font-light"><?php the_title(); ?></h1>
                 <?php wc_get_template('single-product/price.php'); ?>
                 <?php wc_get_template('components/product-discount-and-installments.php'); ?>
                 <p class="text-xs font-medium text-neutral-500"><span class="italic"><?php esc_html_e('REF:', 'woocommerce'); ?> </span><span><?php echo esc_html($product->get_sku() ?: __('N/A', 'woocommerce')) ?></span></p>
@@ -68,9 +68,18 @@ if (post_password_required()) {
              * Display the product attributes, quantity input and add to cart button.
              */
             woocommerce_template_single_add_to_cart();
-            ?>
 
-            <?php // wc_get_template('single-product/size-guide.php'); 
+            /**
+             * 
+             */
+            if (shortcode_exists('csbmw_shipping_calculator')) {
+                $shipping_calculator_title = '<h3 class="mt-6 -mb-4 text-xs font-semibold tracking-wider">SIMULAR FRETE E PRAZO DE ENTREGA</h3>';
+
+                echo wp_kses_post($shipping_calculator_title);
+                echo do_shortcode('[csbmw_shipping_calculator]');
+            }
+
+            // wc_get_template('single-product/size-guide.php'); 
             ?>
 
             <div class="mt-4 rounded-md border-[1.5px] border-dashed border-neutral-300 bg-gold-100 p-4 text-sm">
@@ -78,11 +87,11 @@ if (post_password_required()) {
                     <svg class="size-5 shrink-0 text-neutral-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
                         <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275Z"></path>
                     </svg>
-                    <span class="font-semibold">Este item será fabricado especialmente para você.</span>
+                    <span class="font-semibold">Este item é fabricado sob demanda especialmente para você.</span>
                 </div>
                 <p>
                     Sua peça é confeccionada com exclusividade para garantir um produto único com acabamento
-                    impecável. O prazo de entrega estimado reflete o tempo necessário para criar o produto e entregá-lo com total segurança.
+                    impecável. O prazo de entrega estimado compreende o tempo necessário para criar o produto e entregá-lo com total segurança.
                 </p>
             </div>
 

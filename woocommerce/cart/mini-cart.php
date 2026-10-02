@@ -139,7 +139,7 @@ defined('ABSPATH') || exit;
                                                     </template>
                                                 </div>
 
-                                                <p class="price flex flex-1 flex-row flex-nowrap font-medium">
+                                                <p class="price flex flex-1 flex-row flex-nowrap justify-end-safe font-medium">
                                                     <span class="currency-symbol" x-text="item.totals.currency_symbol"></span>
                                                     &nbsp;
                                                     <span class="amount" x-text="formatPrice(item.totals.line_subtotal)"></span>

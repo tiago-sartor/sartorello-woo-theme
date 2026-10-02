@@ -30,6 +30,6 @@ if ($product->is_on_sale()) {
 	}
 
 	if ($max_percentage > 0) {
-		echo '<span class="inline-flex items-center justify-center self-start rounded-sm border border-neutral-300 bg-gold-100 p-2 text-xs font-bold" aria-label="Etiqueta de desconto em porcentagem">' . esc_html(round($max_percentage)) . '% OFF</span>';
+		echo '<span class="inline-flex items-center justify-center self-start rounded-sm border border-gold-400 bg-gold-300 p-2 text-xs font-bold shadow-sm" aria-label="Etiqueta de desconto em porcentagem">' . esc_html(round($max_percentage)) . '% OFF</span>';
 	}
 }

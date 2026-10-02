@@ -20,7 +20,10 @@
    --color-gold-600: hsl(40, 35%, 60%);
    --color-gold-700: hsl(40, 35%, 50%);
    --color-gold-800: hsl(40, 35%, 40%);
-   --color-gold-900: hsl(40, 35%, 32.5%);
+   --color-gold-900: hsl(40, 35%, 30%);
+
+   --color-deep-gold-100: hsl(40, 35%, 22%);
+   --color-deep-gold-200: hsl(40, 35%, 12%);
 
    /* Custom Breakpoints */
    --breakpoint-1360px: 85rem;
@@ -29,9 +32,9 @@
    --container-1440px: 90rem;
 
    /* Animations */
-   --animate-fade-in: fade-in ease-in-out;
-   --animate-fade-in-down: fade-in-down ease-in-out;
-   --animate-fade-in-up: fade-in-up ease-in-out;
+   --animate-fade-in: fade-in 500ms ease-in-out;
+   --animate-fade-in-down: fade-in-down 500ms ease-in-out;
+   --animate-fade-in-up: fade-in-up 500ms ease-in-out;
 
    @keyframes fade-in {
       from {
@@ -131,10 +134,10 @@
       }
 
       &.single {
-         @apply text-2xl font-extralight;
+         @apply text-[1.75rem] font-extralight;
 
          del {
-            @apply inline-block text-base font-light text-neutral-500 line-through;
+            @apply inline-block text-lg font-light text-neutral-500 line-through;
          }
 
          ins {
@@ -167,9 +170,19 @@
     }
 
    /**
-    * HIDE PRODUCT DESCRIPTION INSIDE THE ADD-TO-CART FORM
+    * HIDE PRODUCT DETAILS INSIDE THE ADD-TO-CART FORM
+    * This is used to hide the product description and price inside the add-to-cart form on the single product page.
     */
-   .woocommerce-variation-description {
+   .woocommerce-variation-description,
+   .woocommerce-variation-price {
+      @apply hidden!;
+   }
+   /**
+    * HIDE THE "RESET VARIATIONS" LINK
+    * This is used to hide the "Reset Variations" link on the single product page.
+    * Our theme uses a custom "Reset Variations" button that is styled to match the rest of the theme.
+    */
+   table a.reset_variations {
       @apply hidden!;
    }
 
