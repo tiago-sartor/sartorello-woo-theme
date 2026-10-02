@@ -20,6 +20,9 @@
         "webpack-cli": "^7.2.3"
     },
     "scripts": {
+        "build:ts": "npm run build:ts:frontend && npm run build:ts:admin",
+        "build:ts:frontend": "tsc -p tsconfig.frontend.json",
+        "build:ts:admin": "tsc -p tsconfig.admin.json",
         "dev": "npm run webpack-dev && npm run tailwind-dev",
         "build": "npm run webpack-build && npm run tailwind-build",
         "webpack-dev": "webpack --mode development --watch; ",
