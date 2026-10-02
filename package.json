@@ -20,15 +20,15 @@
         "webpack-cli": "^7.2.3"
     },
     "scripts": {
+        "dev": "npm run dev:webpack && npm run dev:tailwind",
+        "build": "npm run build:tailwind && npm run build:ts && npm run build:webpack",
         "build:ts": "npm run build:ts:frontend && npm run build:ts:admin",
         "build:ts:frontend": "tsc -p tsconfig.frontend.json",
         "build:ts:admin": "tsc -p tsconfig.admin.json",
-        "dev": "npm run webpack-dev && npm run tailwind-dev",
-        "build": "npm run webpack-build && npm run tailwind-build",
-        "webpack-dev": "webpack --mode development --watch; ",
-        "webpack-build": "webpack --mode production",
-        "tailwind-dev": "npx @tailwindcss/cli -i ./src/input.css -o ./assets/frontend/css/style.css --watch",
-        "tailwind-build": "npx @tailwindcss/cli -i ./src/input.css -o ./assets/frontend/css/style.css",
+        "dev:tailwind": "npx @tailwindcss/cli -i ./src/input.css -o ./assets/frontend/css/style.css --watch",
+        "build:tailwind": "npx @tailwindcss/cli -i ./src/input.css -o ./assets/frontend/css/style.css",
+        "dev:webpack": "webpack --mode development --watch; ",
+        "build:webpack": "webpack --mode production",
         "upgrade-dependencies": "npx npm-check-updates -u && npm install"
     }
 }
