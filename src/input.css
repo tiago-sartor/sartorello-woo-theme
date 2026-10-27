@@ -230,17 +230,179 @@
       }
    }
 
-   /**
-    * CHECKOUT PAGE
-    */
-   #shipping_country_field,
-   #billing_country_field {
-      @apply hidden!;
-   }
 
-   .woocommerce-terms-and-conditions-wrapper a {
-      @apply underline hover:text-gold-500;
-   }
+    /* ───────────────────────
+     *    CHECKOUT PAGE
+     * ─────────────────────── */
+
+    /* ── Brazilian Fields Optimizations ──────────────────────────────────────────
+     * Support for the Extra_Checkout_Fields_For_Brazil plugin.
+     * ────────────────────────────────────────────────────────────────────────── */
+    .wcbcf-value-toggle {
+        @apply gap-1.5!;
+
+        .wcbcf-value-toggle-box {
+            @apply size-3.5! rounded-xs! border-neutral-500!;
+
+            .wcbcf-value-toggle-mark {
+                @apply top-[-2.25px]! -left-px! size-3.5!;
+            }
+        }
+
+        .wcbcf-value-toggle-text {
+            @apply text-xs! tracking-tight! text-neutral-500! font-medium! hover:text-neutral-800!;
+        }
+    }
+
+    /* ── Floating Label Field ───────────────────────────────────────────────────
+     * Applied to the outer wrapper div of every text/select input.
+     * No JavaScript needed — uses :focus-within, :has(), and placeholder=" ".
+     * ────────────────────────────────────────────────────────────────────────── */
+    .checkout-form-field {
+        @apply relative;
+
+        & label {
+            @apply pointer-events-none absolute top-3.5 left-3.5 z-10 text-sm text-neutral-500
+                transition-all duration-200 ease-in-out select-none;
+        }
+
+        &:focus-within label {
+            @apply top-1.5 text-[11px] font-medium;
+        }
+
+        &:has(input:not(:placeholder-shown)) label,
+        &:has(select) label,
+        &:has(input:-webkit-autofill) label {
+            @apply top-1.5 text-[11px] font-medium;
+        }
+
+        & .woocommerce-input-wrapper {
+            @apply block h-12 w-full rounded-lg border border-neutral-500 bg-white;
+        }
+
+        &:focus-within .woocommerce-input-wrapper {
+            @apply border-neutral-900 ring-1 ring-neutral-900;
+        }
+
+        & input {
+            @apply size-full bg-transparent px-3.5 text-sm text-neutral-900 transition-all duration-200 ease-in-out focus:outline-none;
+        }
+
+        &:focus-within input,
+        &:has(input:not(:placeholder-shown)) input,
+        &:has(input:-webkit-autofill) input {
+            @apply pt-4;
+        }
+
+        & select {
+            @apply size-full cursor-pointer appearance-none bg-transparent px-3.5 pt-4 text-sm text-neutral-900 focus:outline-none;
+        }
+    }
+
+    /* ── Checkout Fields Flow ──────────────────────────────────────────────────
+     * Fluid row-based field display respecting WooCommerce form-row classes.
+     * Supports Brazilian (Extra_Checkout_Fields_For_Brazil) & International layouts.
+     * ────────────────────────────────────────────────────────────────────────── */
+    .checkout-fields-flow {
+        
+        & .checkout-form-field,
+        & .form-row {
+            @apply w-full mb-0;
+        }
+
+        @variant sm {
+            & .checkout-form-field.form-row-first,
+            & .checkout-form-field.form-row-last {
+                width: calc(50% - 0.375rem);
+            }
+
+            & .checkout-form-field.form-row-wide {
+                width: 100%;
+            }
+        }
+    }
+
+    /*
+     * Inline error message for invalid checkout fields.
+     */
+    .checkout-inline-error-message {
+        @apply mt-1.5 ml-0.5 block text-xs font-medium text-red-700;
+    }
+
+    /* SELECT2 */
+    .woocommerce-checkout .select2-container {
+        @apply size-full! bg-transparent!;
+    }
+
+    .woocommerce-checkout .select2-container--open .select2-dropdown {
+        @apply border-neutral-500! shadow-lg!;
+    }
+
+    .woocommerce-checkout .select2-search--dropdown {
+        @apply p-2!;
+    }
+
+    .woocommerce-checkout .select2-search--dropdown .select2-search__field {
+        @apply rounded-md! border! border-neutral-500! px-3.5! py-2! text-sm!;
+    }
+
+    .woocommerce-checkout .select2-container--default .select2-search--dropdown .select2-search__field:focus,
+    .woocommerce-checkout .select2-container--default .select2-search--dropdown .select2-search__field:hover {
+        @apply border-neutral-900! ring-1! ring-neutral-900! outline-none!;
+    }
+    
+    .woocommerce-checkout .select2-selection--single .select2-selection__rendered,
+    .woocommerce-checkout .select2-selection__rendered,
+    .woocommerce-checkout .select2-selection__rendered .select2-selection__placeholder {
+        @apply flex! h-full! items-center! p-0! text-sm! text-neutral-900!;
+    }
+
+    .woocommerce-checkout .select2-selection {
+        @apply h-full! px-3.5! pt-4.5!;
+    }
+
+    .woocommerce-checkout .select2-container .select2-selection--single {
+        @apply relative! bg-transparent! border-none!;
+    }
+  
+    .woocommerce-checkout .select2-selection__arrow {
+        @apply pointer-events-none! absolute! top-0! right-2! h-full! w-5.5! bg-neutral-600! mask-center! mask-no-repeat! content-[""]!;
+        mask-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZT0iY3VycmVudENvbG9yIiBjbGFzcz0ic2l6ZS02Ij4NCiAgPHBhdGggc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBkPSJNOC4yNSAxNSAxMiAxOC43NSAxNS43NSAxNW0tNy41LTZMMTIgNS4yNSAxNS43NSA5IiAvPg0KPC9zdmc+DQo=);
+    }
+
+    .woocommerce-checkout .select2-selection__arrow b {
+        @apply hidden!;
+    }
+
+    .woocommerce-checkout .select2-results {
+        @apply pt-1!;
+    }
+
+    .woocommerce-checkout .select2-results__options {
+        @apply space-y-1! px-3! pb-3!;
+    }
+
+    .woocommerce-checkout .select2-results__option {
+        @apply rounded-md! px-3.5! py-2! text-sm! text-neutral-600! transition-all! duration-300! ease-in-out!;
+    }
+
+    .woocommerce-checkout .select2-container--default .select2-results__option[data-selected=true] {
+        @apply bg-neutral-800! font-medium! text-white!;
+    }
+
+    .woocommerce-checkout .select2-container--default .select2-results__option--highlighted[data-selected=false] {
+        @apply bg-neutral-200! text-neutral-900!;
+    }
+
+
+    #shipping_country_field,
+    #billing_country_field {
+        @apply hidden!;
+    }
+
+    .woocommerce-terms-and-conditions-wrapper a {
+        @apply underline hover:text-gold-500;
+    }
 
    /**
     * BOLETO & PIX - Pagar.me

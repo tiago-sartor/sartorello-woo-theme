@@ -134,3 +134,49 @@ function add_tailwind_classes_to_cart_item_thumbnail($thumbnail, $cart_item, $ca
 
     return $thumbnail;
 }
+
+
+// Keep an empty placeholder value so address-i18n does not fall back to the field label.
+add_filter( 'woocommerce_get_country_locale', 'sartorello_remove_placeholders_from_locales', 9999 );
+add_filter( 'woocommerce_get_country_locale_base', 'sartorello_remove_placeholders_from_base_locales', 9999 );
+
+/**
+	 * Remove placeholders from localized checkout fields.
+	 *
+	 * @param array<string, mixed> $locales Country locale field definitions.
+	 * @return array<string, mixed> Updated country locale field definitions.
+	 */
+	function sartorello_remove_placeholders_from_locales( array $locales ): array {
+		foreach ( $locales as &$country_fields ) {
+			if ( ! is_array( $country_fields ) ) {
+				continue;
+			}
+
+			foreach ( $country_fields as &$field ) {
+				if ( is_array( $field ) ) {
+					$field['placeholder'] = '';
+				}
+			}
+			unset( $field );
+		}
+		unset( $country_fields );
+
+		return $locales;
+	}
+
+	/**
+	 * Remove placeholders from base checkout fields.
+	 *
+	 * @param array<string, mixed> $fields Base checkout field definitions.
+	 * @return array<string, mixed> Updated checkout field definitions.
+	 */
+	function sartorello_remove_placeholders_from_base_locales( array $fields ): array {
+		foreach ( $fields as &$field ) {
+			if ( is_array( $field ) ) {
+				$field['placeholder'] = '';
+			}
+		}
+		unset( $field );
+
+		return $fields;
+	}

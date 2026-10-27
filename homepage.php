@@ -19,12 +19,16 @@ $homepage_banner = get_option('sartorello_woo_theme_homepage_banner');
         </div>
     </section>
 
-    <section class="mx-auto flex h-20 max-w-1440px items-center justify-center px-4 text-center sm:px-6 lg:px-8">
+    <section>
+        <?php wc_get_template('components/homepage/black-november-banner-home.php'); ?>
+    </section>
+
+    <!-- <section class="mx-auto flex h-20 max-w-1440px items-center justify-center px-4 text-center sm:px-6 lg:px-8">
         <p class="inline-block rounded-sm bg-neutral-900 px-6 py-2 text-sm font-light text-white">
             <span class="font-bold">5% OFF</span> com o cupom <span class="font-bold">PRIMEIRACOMPRA</span> &bull;
             <span class="font-bold">Frete Grátis</span> em compras acima de R$ 5.000,00 para regiões selecionadas
         </p>
-    </section>
+    </section> -->
 
     <section x-data="{}" class="mx-auto max-w-1440px px-4 sm:px-6 lg:px-8 py-10">
         <div class="flex flex-col items-center justify-center gap-1">

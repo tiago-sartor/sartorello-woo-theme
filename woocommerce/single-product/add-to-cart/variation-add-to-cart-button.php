@@ -47,7 +47,7 @@ global $product;
         type="submit"
         class="
         single_add_to_cart_button button alt<?php echo esc_attr(wc_wp_theme_get_element_class_name('button') ? ' ' . wc_wp_theme_get_element_class_name('button') : ''); ?>
-        flex items-center justify-center w-full h-12 px-8 py-3 rounded-md tracking-wide text-white bg-deep-gold-100 hover:bg-gold-800 focus:ring-2 focus:ring-gold-900 focus:ring-offset-2 focus:outline-hidden
+        flex items-center justify-center w-full h-12 px-8 py-3 rounded-md tracking-wide text-white bg-neutral-900 hover:bg-neutral-700 focus:ring-2 focus:ring-neutral-800 focus:ring-offset-2 focus:outline-hidden
 		">
         <?php echo esc_html($product->single_add_to_cart_text()); ?>
     </button>

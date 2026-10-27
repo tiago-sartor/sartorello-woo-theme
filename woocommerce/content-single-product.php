@@ -56,6 +56,7 @@ if (post_password_required()) {
 
         <div class="mt-10 sm:mt-16 lg:mt-0">
             <div class="flex flex-col gap-2.5">
+                <?php wc_get_template('components/black-november-banner-single-product.php'); ?>
                 <?php wc_get_template('single-product/sale-badge.php'); ?>
                 <h1 class="text-4xl font-serif font-light"><?php the_title(); ?></h1>
                 <?php wc_get_template('single-product/price.php'); ?>

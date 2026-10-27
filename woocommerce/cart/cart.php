@@ -20,6 +20,10 @@ declare(strict_types=1);
 defined('ABSPATH') || exit;
 ?>
 
+<section class="mt-8 rounded-2xl overflow-clip">
+    <?php wc_get_template('components/homepage/black-november-banner-home.php'); ?>
+</section>
+
 <div class="mt-10 mb-8">
     <h1 class="text-4xl tracking-wide" aria-label="<?php the_title(); ?>"><?php the_title(); ?></h1>
 </div>

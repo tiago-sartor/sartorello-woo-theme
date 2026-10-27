@@ -71,8 +71,7 @@ if (! $checkout->is_registration_enabled() && $checkout->is_registration_require
 
 
 		<div
-			x-data="{ open: false, isMobile: window.innerWidth < 1024, total: '' }"
-			x-init="if (!isMobile) open = true"
+			x-data="{ open: true, total: '' }"
 			class="order-first lg:order-last mb-8">
 			<div x-on:click="open = !open" class="relative flex items-center justify-between mb-4 p-4 border border-neutral-300 rounded-md bg-neutral-50 lg:p-0 lg:border-0 lg:bg-transparent">
 				<div class="flex items-center justify-start gap-2">
@@ -86,7 +85,7 @@ if (! $checkout->is_registration_enabled() && $checkout->is_registration_require
 				<span class="flex-1 text-right font-semibold whitespace-nowrap lg:hidden!" x-html="total"></span>
 			</div>
 
-			<div x-collapse.duration.300ms x-show="isMobile ? open : true" id="order_review" class="woocommerce-checkout-review-order">
+			<div x-collapse.duration.300ms x-show="open" id="order_review" class="woocommerce-checkout-review-order">
 				<?php wc_get_template('checkout/review-order.php'); ?>
 			</div>
 		</div>
