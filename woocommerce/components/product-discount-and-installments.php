@@ -59,6 +59,8 @@ if (is_product() && get_queried_object_id() === $product->get_id()) {
                     let variationPrice = document.querySelector('.woocommerce-variation-price .price');
                     let onSaleVariationPrice = document.querySelector('.woocommerce-variation-price .price ins');
 
+                    if (!variationPrice) return;
+
                     if (onSaleVariationPrice) {
                         variationPrice = onSaleVariationPrice;
                     }
