@@ -39,7 +39,7 @@ global $product;
             <span class="price font-semibold"></span>
         </div>
         <div class="text-sm">
-            <a *href="#" class="reset_variations underline hover:text-gold-700" role="button">Limpar opções</a>
+            <a href="#" class="reset_variations underline hover:text-gold-700" role="button">Limpar opções</a>
         </div>
     </div>
 
