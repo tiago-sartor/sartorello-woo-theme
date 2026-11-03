@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Mini-cart
  *
@@ -15,7 +14,7 @@
  *
  * @see     https://woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
- * @version 10.0.0
+ * @version 11.2.0
  */
 
 declare(strict_types=1);
@@ -107,6 +106,7 @@ defined('ABSPATH') || exit;
 
                         <div class="mt-3">
                             <ul class="divide-y divide-neutral-200">
+                                <?php do_action('woocommerce_before_mini_cart_contents'); ?>
 
                                 <template x-for="item in cart.items" :key="item.key">
 
@@ -160,6 +160,8 @@ defined('ABSPATH') || exit;
                                         </div>
                                     </li>
                                 </template>
+
+                                <?php do_action('woocommerce_mini_cart_contents'); ?>
                             </ul>
                         </div>
                     </div>
@@ -174,6 +176,8 @@ defined('ABSPATH') || exit;
                             </p>
                         </div>
                         <p class="mt-1.5 text-sm text-neutral-500">A entrega será calculada durante o checkout.</p>
+
+                        <?php do_action('woocommerce_widget_shopping_cart_before_buttons'); ?>
 
                         <div class="mt-6">
                             <a
@@ -194,6 +198,8 @@ defined('ABSPATH') || exit;
                                 Ver carrinho
                             </a>
                         </div>
+
+                        <?php do_action('woocommerce_widget_shopping_cart_after_buttons'); ?>
                     </div>
                 </div>
             </template>

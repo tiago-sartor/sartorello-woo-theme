@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Cart totals
  *
@@ -21,6 +20,8 @@ defined('ABSPATH') || exit;
 ?>
 
 <div class="cart_totals text-base <?php echo (WC()->customer->has_calculated_shipping()) ? 'calculated_shipping' : ''; ?>">
+
+	<?php do_action('woocommerce_before_cart_totals'); ?>
 
 	<h2 class="text-xl font-medium mb-3"><?php esc_html_e('Cart totals', 'woocommerce'); ?></h2>
 
@@ -73,11 +74,11 @@ defined('ABSPATH') || exit;
 
 		<?php if (WC()->cart->needs_shipping() && WC()->cart->show_shipping()) : ?>
 
-			<?php do_action( 'woocommerce_cart_totals_before_shipping' ); ?>
+			<?php do_action('woocommerce_cart_totals_before_shipping'); ?>
 
 			<?php wc_cart_totals_shipping_html(); ?>
-            
-			<?php do_action( 'woocommerce_cart_totals_after_shipping' ); ?>
+
+			<?php do_action('woocommerce_cart_totals_after_shipping'); ?>
 
 		<?php elseif (WC()->cart->needs_shipping() && 'yes' === get_option('woocommerce_enable_shipping_calc')) : ?>
 
@@ -126,10 +127,14 @@ defined('ABSPATH') || exit;
 		<?php endif; ?>
 
 		<div>
+			<?php do_action('woocommerce_cart_totals_before_order_total'); ?>
+
 			<div class="order-total flex justify-between p-4 text-lg font-semibold">
 				<span class="text-left"><?php esc_html_e('Total', 'woocommerce'); ?></span>
-				<span class="text-right whitespace-nowrap" data-title="<?php esc_attr_e('Total', 'woocommerce'); ?>"><?php echo WC()->cart->get_total(); ?></span>
+				<span class="text-right whitespace-nowrap" data-title="<?php esc_attr_e('Total', 'woocommerce'); ?>"><?php wc_cart_totals_order_total_html(); ?></span>
 			</div>
+
+			<?php do_action('woocommerce_cart_totals_after_order_total'); ?>
 
 			<?php do_shortcode('[cart-discount-and-installments]'); ?>
 		</div>
@@ -139,5 +144,7 @@ defined('ABSPATH') || exit;
 	<div class="wc-proceed-to-checkout">
 		<?php do_action('woocommerce_proceed_to_checkout'); ?>
 	</div>
+
+	<?php do_action('woocommerce_after_cart_totals'); ?>
 
 </div>

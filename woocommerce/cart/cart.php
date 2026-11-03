@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Cart Page
  *
@@ -13,7 +12,7 @@
  *
  * @see     https://woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
- * @version 10.8.0
+ * @version 11.2.0
  */
 
 declare(strict_types=1);
@@ -45,20 +44,35 @@ defined('ABSPATH') || exit;
                 $_product   = apply_filters('woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key);
                 $product_id = apply_filters('woocommerce_cart_item_product_id', $cart_item['product_id'], $cart_item, $cart_item_key);
 
-                if ($_product instanceof WC_Product && $_product->exists() && $cart_item['quantity'] > 0 && apply_filters('woocommerce_cart_item_visible', true, $cart_item, $cart_item_key)) {
-                    $product_name = apply_filters('woocommerce_cart_item_name', $_product->get_name(), $cart_item, $cart_item_key);
-                    $product_permalink = apply_filters('woocommerce_cart_item_permalink', $_product->is_visible() ? $_product->get_permalink($cart_item) : '', $cart_item, $cart_item_key);
-                    $product_thumbnail = apply_filters('woocommerce_cart_item_thumbnail', $_product->get_image(), $cart_item, $cart_item_key);
-                    $product_price = apply_filters('woocommerce_cart_item_price', WC()->cart->get_product_price($_product), $cart_item, $cart_item_key);
+                /**
+                 * Filter whether this cart item is visible in the cart.
+                 *
+                 * @since 2.1.0
+                 * @param bool   $visible     Whether the cart item is visible. Default true.
+                 * @param array  $cart_item   The cart item data.
+                 * @param string $cart_item_key The cart item key.
+                 */
+                $visible = apply_filters('woocommerce_cart_item_visible', true, $cart_item, $cart_item_key);
+
+                if ($_product instanceof WC_Product && $_product->exists() && $cart_item['quantity'] > 0 && $visible) {
+                    $cart_item_name     = WC()->cart->get_item_product_name($cart_item, $_product);
+                    $product_name       = apply_filters('woocommerce_cart_item_name', $cart_item_name, $cart_item, $cart_item_key);
+                    $product_permalink  = apply_filters('woocommerce_cart_item_permalink', $_product->is_visible() ? $_product->get_permalink($cart_item) : '', $cart_item, $cart_item_key);
+                    $product_thumbnail  = apply_filters('woocommerce_cart_item_thumbnail', $_product->get_image(), $cart_item, $cart_item_key);
+                    $product_price      = apply_filters('woocommerce_cart_item_price', WC()->cart->get_product_price($_product), $cart_item, $cart_item_key);
                     $product_attributes = $cart_item['variation'] ?? [];
-                    $product_subtotal = apply_filters('woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal($_product, $cart_item['quantity']), $cart_item, $cart_item_key);
+                    $product_subtotal   = apply_filters('woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal($_product, $cart_item['quantity']), $cart_item, $cart_item_key);
             ?>
-                    <li class="woocommerce-cart-form__cart-item cart_item flex py-6">
+                    <li class="woocommerce-cart-form__cart-item <?php echo esc_attr(apply_filters('woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key)); ?> flex py-6">
 
                         <div class="size-23 sm:size-45 shrink-0 overflow-clip rounded-md">
-                            <a href="<?php echo esc_url($product_permalink); ?>">
+                            <?php if (!$product_permalink) : ?>
                                 <?php echo wp_kses_post($product_thumbnail); ?>
-                            </a>
+                            <?php else : ?>
+                                <a href="<?php echo esc_url($product_permalink); ?>">
+                                    <?php echo wp_kses_post($product_thumbnail); ?>
+                                </a>
+                            <?php endif; ?>
                         </div>
 
                         <div class="ml-4 sm:ml-6 flex flex-1 flex-col">
@@ -67,10 +81,16 @@ defined('ABSPATH') || exit;
 
                                 <div class="flex flex-col text-base">
                                     <h3>
-                                        <a href="<?php echo esc_url($product_permalink); ?>">
+                                        <?php if (!$product_permalink) : ?>
                                             <?php echo wp_kses_post($product_name); ?>
-                                        </a>
+                                        <?php else : ?>
+                                            <a href="<?php echo esc_url($product_permalink); ?>">
+                                                <?php echo wp_kses_post($product_name); ?>
+                                            </a>
+                                        <?php endif; ?>
                                     </h3>
+
+                                    <?php do_action('woocommerce_after_cart_item_name', $cart_item, $cart_item_key); ?>
 
                                     <?php
                                     // Backorder notification.
@@ -100,16 +120,19 @@ defined('ABSPATH') || exit;
 
                             <div class="flex flex-1 items-end justify-between mt-3">
                                 <?php
-                                woocommerce_quantity_input(
+                                $product_quantity = woocommerce_quantity_input(
                                     array(
                                         'input_name'   => "cart[{$cart_item_key}][qty]",
                                         'input_value'  => $cart_item['quantity'],
-                                        'min_value'    => $_product->get_min_purchase_quantity(),
-                                        'max_value'    => $_product->get_max_purchase_quantity(),
+                                        'min_value'    => $_product->is_sold_individually() ? 1 : $_product->get_min_purchase_quantity(),
+                                        'max_value'    => $_product->is_sold_individually() ? 1 : $_product->get_max_purchase_quantity(),
                                         'product_name' => $product_name,
                                     ),
-                                    $_product
+                                    $_product,
+                                    false
                                 );
+
+                                echo apply_filters('woocommerce_cart_item_quantity', $product_quantity, $cart_item_key, $cart_item);
                                 ?>
                                 <div class="product-remove">
                                     <a
@@ -117,9 +140,10 @@ defined('ABSPATH') || exit;
                                         data-product_id="<?php echo esc_attr($product_id); ?>"
                                         data-cart_item_key="<?php echo esc_attr($cart_item_key); ?>"
                                         data-product_sku="<?php echo esc_attr($_product->get_sku()); ?>"
+                                        aria-label="<?php echo esc_attr(sprintf(__('Remove %s from cart', 'woocommerce'), wp_strip_all_tags($product_name))); ?>"
                                         class="remove text-xs font-medium underline text-neutral-500 hover:text-red-900"
                                         role="button">
-                                        Remover
+                                        <?php echo __('Remove', 'woocommerce'); ?>
                                     </a>
                                 </div>
                             </div>
