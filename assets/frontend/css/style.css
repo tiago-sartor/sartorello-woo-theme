@@ -102,8 +102,6 @@
     --color-gold-600: hsl(40, 35%, 60%);
     --color-gold-700: hsl(40, 35%, 50%);
     --color-gold-800: hsl(40, 35%, 40%);
-    --color-gold-900: hsl(40, 35%, 30%);
-    --color-deep-gold-100: hsl(40, 35%, 22%);
     --container-1440px: 90rem;
     --animate-fade-in-down: fade-in-down 500ms ease-in-out;
   }

@@ -45,12 +45,19 @@ function sartorello_woo_theme_setup(): void
 // WooCommerce Integration & Improvements
 //==========================================
 //
+// Remove Page Title from WooCommerce pages.
+add_filter('woocommerce_show_page_title', '__return_false');
+
+// Force WooCommerce to always show variation prices on single product pages,
+// even if the price is the same for all variations.
+add_filter( 'woocommerce_show_variation_price', '__return_true' );
+
 // Remove WooCommerce styles.
 // This prevent default WooCommerce styles from overriding our own.
 add_filter('woocommerce_enqueue_styles', '__return_false');
 
-// Remove Page Title from WooCommerce pages.
-add_filter('woocommerce_show_page_title', '__return_false');
+// Enable block notices and enqueue their styles.
+add_filter( 'woocommerce_use_block_notices_in_classic_theme', '__return_true' );
 
 
 //========================================
